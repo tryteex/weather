@@ -34,3 +34,33 @@ Weather CLI is an application that displays weather information for CLI on Windo
 ## Note
 
 We would like to note separately that not all weather providers provide a forecast for the specified date, so the program searches for the closest date to the entered one.
+
+## The result of the application
+
+```
+user@laptop:~$ weater cargo run get Kyiv
+Weather for 'now'. OpenWeather server. Request time 560 ms.
+Request address: Kyiv.
+Found address: Київ, Україна (50.4500336,30.5241361).
+Forecast date on the server: 2023-04-24 14:14:53 (+03:00)
+----------------------------------------
+Group of weather parameters  : Clouds
+Temperature                  : 19.7 °C
+Human perception temperature : 18.6 °C
+Atmospheric pressure         : 1012 hPa
+Humidity                     : 35 %
+Wind speed                   : 4.3 meter/sec
+Wind direction and degrees   : SouthSouthEast (160°)
+Wind gust                    : 4.5 meter/sec
+Rain volume (last 1 hour)    : None
+Rain volume (last 3 hour)    : None
+Snow volume (last 1 hour)    : None
+Snow volume (last 3 hour)    : None
+Visibility                   : 10000 meter
+Sunrise time                 : 2023-04-24 05:46:52 (+03:00)
+Sunset time                  : 2023-04-24 20:05:04 (+03:00)
+```
+
+## Safety Warnings
+
+The saved keys are stored in the file `key.txt` in an unencrypted form in the same directory as this application.
