@@ -164,7 +164,7 @@ impl WeatherAPI {
             .and_then(|its| its.as_object())
             .or_else(|| {
                 println!("The WeatherAPI server did not provide weather forecast data");
-                return None;
+                None
             })?;
         self.detect(items, geo, address)
     }
@@ -187,7 +187,7 @@ impl WeatherAPI {
             .and_then(|i| i.as_array())
             .or_else(|| {
                 println!("The WeatherAPI server did not provide weather forecast data");
-                return None;
+                None
             })?;
         // Load all WeatherAPIItem to vector
         let mut list = Vec::with_capacity(24);
@@ -274,23 +274,16 @@ impl WeatherAPI {
             .and_then(|s| s.as_u64())
             .map(|s| s as u8);
         let will_it_rain = items.get("will_it_rain").and_then(|s| s.as_u64()).map(|s| {
-            if s == 1 {
-                true
-            } else {
-                false
-            }
+            s == 1
         });
         let chance_of_snow = items
             .get("chance_of_snow")
             .and_then(|s| s.as_u64())
             .map(|s| s as u8);
-        let will_it_snow = items.get("will_it_snow").and_then(|s| s.as_u64()).map(|s| {
-            if s == 1 {
-                true
-            } else {
-                false
-            }
-        });
+        let will_it_snow = items
+            .get("will_it_snow")
+            .and_then(|s| s.as_u64())
+            .map(|s| s == 1);
         let vis = items
             .get("vis_km")
             .and_then(|s| s.as_f64())

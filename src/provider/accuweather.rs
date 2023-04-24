@@ -189,7 +189,7 @@ impl AccuWeather {
             }
         };
         // Find geo coordinates by address
-        let mut geo = Geo::get(&address)?;
+        let mut geo = Geo::get(address)?;
         let geo = match geo.pop() {
             Some(geo) => geo,
             None => {
@@ -274,7 +274,7 @@ impl AccuWeather {
             .and_then(|i| i.as_array())
             .or_else(|| {
                 println!("The AccuWeather server did not provide weather forecast data");
-                return None;
+                None
             })?;
         // Load all AccuWeatherItemForecast to vector
         let mut list = Vec::with_capacity(24);

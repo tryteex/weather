@@ -173,7 +173,7 @@ impl OpenWeather {
             .and_then(|its| its.as_array())
             .or_else(|| {
                 println!("The OpenWeather server did not provide weather forecast data");
-                return None;
+                None
             })?;
         // Load all OpenWeatherItem to vector
         let mut list = Vec::with_capacity(40);

@@ -175,7 +175,7 @@ impl AerisWeather {
             .and_then(|its| its.as_array())
             .or_else(|| {
                 println!("The AerisWeather server did not provide weather forecast data");
-                return None;
+                None
             })?;
         // Load all AerisWeatherItem to vector
         let mut list = Vec::with_capacity(40);
@@ -322,10 +322,10 @@ impl AerisWeather {
         println!("Weather description          : {}", item.weather.as_ref().map_or("None".to_owned(), |s| s.to_owned()));
         match item.temp_c {
             TempView::None =>              println!("Temperature                  : None"),
-            TempView::Single(temp) => println!("Temperature                  : {}", format!("{:#.1} °C", temp)),
+            TempView::Single(temp) => println!("Temperature                  : {:#.1}", temp),
             TempView::MinMax((min, max)) => {
-                                           println!("Temperature min              : {}", format!("{:#.1} °C", min));
-                                           println!("Temperature max              : {}", format!("{:#.1} °C", max));
+                                           println!("Temperature min              : {:#.1}", min);
+                                           println!("Temperature max              : {:#.1} °C", max);
             },
         }
         println!("Dew point                    : {}", item.dewpoint_c.map_or("None".to_owned(), |s| format!("{:#.1} °C", s)));
