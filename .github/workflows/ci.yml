@@ -1,0 +1,46 @@
+# The name of the CI (Continuous Integration) workflow
+name: CI
+
+# Triggers to start a CI workflow
+on:
+  # Run when changes are merged into the main branch
+  push:
+    branches:
+      - main
+  # Run when creating a pull request to the main branch
+  pull_request:
+    branches:
+      - main
+
+# Tasks (jobs) that will be performed in the CI workflow
+jobs:
+  # Build the project
+  build:
+    # Run on different operating systems
+    runs-on: ${{ matrix.os }}
+    # Using the matrix strategy to list operating systems
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        include:
+          - os: ubuntu-latest
+            displayName: Linux
+          - os: macos-latest
+            displayName: macOS
+          - os: windows-latest
+            displayName: Windows
+    # Steps to follow in each task
+    steps:
+    # Step 1: Get the code from the repository
+    - name: Checkout code
+      uses: actions/checkout@v2
+    # Step 2: Set up Rust
+    - name: Set up Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        profile: minimal
+        toolchain: stable
+        override: true
+    # Step 3: Run the tests
+    - name: Test
+      run: cargo --release test --verbose
