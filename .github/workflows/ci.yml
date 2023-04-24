@@ -43,4 +43,4 @@ jobs:
         override: true
     # Step 3: Run the tests
     - name: Test
-      run: cargo --release test --verbose
+      run: cargo test --verbose
