@@ -38,7 +38,7 @@ We would like to note separately that not all weather providers provide a foreca
 ## The result of the application
 
 ```
-user@laptop:~$ weater cargo run get Kyiv
+user@laptop:~$ weather cargo run get Kyiv
 Weather for 'now'. OpenWeather server. Request time 560 ms.
 Request address: Kyiv.
 Found address: Київ, Україна (50.4500336,30.5241361).
