@@ -37,8 +37,10 @@ We would like to note separately that not all weather providers provide a foreca
 
 ## The result of the application
 
+### Getting the weather forecast
+
 ```
-user@laptop:~$ weather cargo run get Kyiv
+user@laptop:~$ weather run get Kyiv
 Weather for 'now'. OpenWeather server. Request time 560 ms.
 Request address: Kyiv.
 Found address: Київ, Україна (50.4500336,30.5241361).
@@ -59,6 +61,29 @@ Snow volume (last 3 hour)    : None
 Visibility                   : 10000 meter
 Sunrise time                 : 2023-04-24 05:46:52 (+03:00)
 Sunset time                  : 2023-04-24 20:05:04 (+03:00)
+```
+
+### List of all weather providers
+
+```
+user@laptop:~$ weather run configure
+Weather can be obtained through the following providers:
+  *1 - OpenWeather
+   2 - WeatherAPI
+   3 - AccuWeather
+   4 - AerisWeather
+* - default provider.
+Please set the new default provider [Integer from 1 to 4]: 2
+The 'WeatherAPI' provider was successfully installed by default.
+```
+### Installing the api key
+
+```
+user@laptop:~$ weather configure WeatherAPI
+Configure credentials for WeatherAPI: 
+
+Please enter the API key to access the weather forecast. Current key=some_api_key: some_api_key
+The key 'some_api_key' was setted successfully.
 ```
 
 ## Safety Warnings
